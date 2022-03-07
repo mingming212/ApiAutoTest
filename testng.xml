@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <test verbose="2" preserve-order="true" name="/Users/helena.liu/gitProjects/ApiAutoTest">
+        <groups>
+            <run>
+
+                <!--不执行的group，还要在不想执行的class前面加上@Test(groups={“NoRun”})-->
+                <exclude name="NoRun"></exclude>
+            </run>
+
+        </groups>
+
+
+        <packages>
+            <package name="com.whs.cases">
+            </package>
+            
+        </packages>
+        
+        <classes>
+
+            <class name="com.whs.cases.GongQuJiankong">
+                <methods><!--
+                    <exclude name="guanlianTest"></exclude>-->
+                </methods>
+            </class>
+            <class name="com.whs.cases.dataProviderCases">
+<!--
+                <methods>
+                    <include name=""/>
+                </methods>-->
+            </class>
+        </classes>
+    </test>
+</suite>
