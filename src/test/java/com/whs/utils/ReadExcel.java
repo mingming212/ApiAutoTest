@@ -7,10 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +19,8 @@ public class ReadExcel {
         List<String[]> readliststr=new ArrayList<String[]>();
 
         //开始读取
-        File readexcel = new File(readurl);
-        FileInputStream fis = new FileInputStream(readexcel);   //文件流对象
-        //Workbook   wb = new HSSFWorkbook(fis);
-        Workbook wb=new XSSFWorkbook(fis);
+        InputStream is = ReadExcel.class.getClassLoader().getResourceAsStream(readurl);
+        Workbook wb=new XSSFWorkbook(is);
 
         //开始解析
         Sheet sheet = wb.getSheetAt(0);     //读取sheet 0

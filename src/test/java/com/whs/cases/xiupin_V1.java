@@ -2,30 +2,31 @@ package com.whs.cases;
 
 import com.whs.utils.GetDataProperty;
 import com.whs.utils.PostOrGetMethod;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.hamcrest.Matchers.equalTo;
-
-@Feature("秀拼")
-public class xiupin {
+/**
+ * 第一版，实现多接口调用，还没有case的概念
+ * 关联接口：先获取我的秀拼列表，再访问列表中第一个秀拼详情，再获这个秀拼详情页上的评论
+ */
+@Test(groups = "NoRun")
+public class xiupin_V1 {
     PostOrGetMethod request=new PostOrGetMethod();
 
     String propPath="property/data.properties";
     String host= GetDataProperty.getproperdata(propPath,"host_xiupin");
     String header="header_public";
-    int showGroupId=0;
 
+    @Test
+    public void testXiupin() throws Exception {
+        int showGroupId=getXiupinList();
+        getXiupinInfo(showGroupId);
+        getXiupinComment(showGroupId);
 
+    }
 
-
-    @Story("获取我的秀拼列表")
-    @Test(description = "成功返回秀拼列表")
-    public void getXiupinList() throws Exception {
+    public int getXiupinList() throws Exception {
         String url_xiupinList="/show-group-api/applet/showGroupUser/myShowGroup";
 
         String body_xiupinList="{\"pageNum\":1,\"pageSize\":10}";
@@ -33,31 +34,10 @@ public class xiupin {
         int showGroupId=response.path("data.content[0].showGroupId");
         System.out.println("-----------------"+showGroupId);
 
-        this.showGroupId=showGroupId;
+        return showGroupId;
     }
 
-    @Story("获取我的秀拼列表")
-    @Test(description = "我的秀拼列表，翻页")
-    public void getXiupinList_nextPage(){
-
-    }
-
-    @Story("获取我的秀拼列表")
-    @Test(description = "我的秀拼列表，最后一页")
-    public void getXiupinList_lastPage(){
-
-    }
-
-    @Story("获取我的秀拼列表")
-    @Test(description = "我的秀拼列表，数量符合数据库记录")
-    public void getXiupinList_db(){
-
-    }
-
-
-    @Story("我的秀拼详情")
-    @Test(description = "获取我的第一个秀拼详情",dependsOnMethods = {"getXiupinList"})
-    public void getXiupinInfo() throws Exception {
+    public void getXiupinInfo(int showGroupId) throws Exception {
         //todo get请求的param处理：需要将param放在get请求中发送，而不是放在URL里
         String url_xiupinInfo="/show-group-api/applet/showGroupUser/getShowGroupInfo?showGroupId="+showGroupId+"&communityId=20";
 
@@ -67,15 +47,9 @@ public class xiupin {
         Assert.assertEquals(return_showGroupId,showGroupId);
     }
 
-
-    /**
-     * 关联接口：先获取我的秀拼列表，再访问列表中第一个秀拼详情，再获取这个秀拼详情页上的评论
-     */
-    @Story("评论")
-    @Test(description = "获取第一个秀拼的评论",dependsOnMethods = {"getXiupinList","getXiupinInfo"})
-    public void getXiupinComment() throws Exception {
+    public void getXiupinComment(int showGroupId) throws Exception {
         String url_xiupinComment="/show-group-api/applet/showGroupUser/commentOnListInOneShowGroup";
-        String body_xiupinComment="{\"showGroupId\":"+showGroupId+",\"pageNum\":1,\"pageSize\":3}";
+        String body_xiupinComment="{\"showGroupId\":883,\"pageNum\":1,\"pageSize\":3}";
 
         Response response=request.post(host, url_xiupinComment, header, body_xiupinComment, "200", "", "");
         Assert.assertEquals(response.path("msg"),"success");

@@ -1,26 +1,11 @@
 package com.whs.cases;
 
 import com.whs.utils.*;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.testng.annotations.BeforeTest;
-
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-
-import io.restassured.response.Response;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.*;
-
 public class dataProviderCases {
-    public static void main(String[] args){
-
-    }
 
 
     /*
@@ -43,9 +28,6 @@ public class dataProviderCases {
         }else if(method.equals("post")){
             request.post(host,url, header,param, assert_code,assert_contain,assert_body);
         }
-
-
-
-
     }
+
 }

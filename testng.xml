@@ -6,7 +6,7 @@
         <groups>
             <run>
 
-                <!--不执行的group，还要在不想执行的class前面加上@Test(groups={“NoRun”})-->
+                <!--不执行的group：需要在不想执行的class前面加上@Test(groups={“NoRun”})-->
                 <exclude name="NoRun"></exclude>
             </run>
 
@@ -14,24 +14,18 @@
 
 
         <packages>
-            <package name="com.whs.cases">
-            </package>
-            
+            <package name="com.whs.cases"></package>
+            <package name="com.whs.conbow.xiupin"/>
+
         </packages>
         
         <classes>
-
             <class name="com.whs.cases.GongQuJiankong">
                 <methods><!--
                     <exclude name="guanlianTest"></exclude>-->
                 </methods>
             </class>
-            <class name="com.whs.cases.dataProviderCases">
-<!--
-                <methods>
-                    <include name=""/>
-                </methods>-->
-            </class>
+
         </classes>
     </test>
 </suite>

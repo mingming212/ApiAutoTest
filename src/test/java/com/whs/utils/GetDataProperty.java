@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class GetDataProperty {
 
-    @Test
+//    @Test
     public void test(){
         getproperdata("property/data.properties","host_xiupin");
 
