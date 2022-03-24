@@ -15,7 +15,6 @@ import java.util.Map;
 @Test(groups = "NoRun")
 public class GongQuJiankong {
     PostOrGetMethod request=new PostOrGetMethod();
-
     String propPath = "property/data.properties";
     String host = GetDataProperty.getproperdata(propPath, "host");
     String header="header_public";

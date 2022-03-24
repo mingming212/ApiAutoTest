@@ -10,6 +10,8 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -21,12 +23,10 @@ import static org.hamcrest.Matchers.equalTo;
 public class XiupinTest{
     Xiupin xiupn=new Xiupin();
 
-    PostOrGetMethod request=new PostOrGetMethod();
-
     String propPath="property/data.properties";
     String host= GetDataProperty.getproperdata(propPath,"host_xiupin");
     String header="header_public";
-    int showGroupId=0;
+//    int showGroupId=0;
 
 
 
@@ -53,11 +53,11 @@ public class XiupinTest{
         Response response=xiupn.xiupinList(1,10);
         response.then().statusCode(200).body("data.size",equalTo(10));
 
+/*
         int showGroupId=response.path("data.content[0].showGroupId");
         System.out.println("-----------------"+showGroupId);
-
         this.showGroupId=showGroupId;
-
+*/
 
     }
 
@@ -82,19 +82,18 @@ public class XiupinTest{
 
     @Story("我的秀拼详情")
     @Test(description = "获取我的第一个秀拼详情",dependsOnMethods = {"getXiupinList"})
-    public void getXiupinInfo() {
+    public void getXiupinInfo() throws MalformedURLException {
+        int showGroupId=xiupn.xiupinList(1,10).path("data.content[0].showGroupId");
         Response response = xiupn.xiupinInfo(showGroupId);
         response.then().statusCode(200).body("data.showGroupId",equalTo(showGroupId));
 
     }
 
 
-    /**
-     * 关联接口：先获取我的秀拼列表，再访问列表中第一个秀拼详情，再获取这个秀拼详情页上的评论
-     */
     @Story("评论")
     @Test(description = "获取第一个秀拼的评论",dependsOnMethods = {"getXiupinList","getXiupinInfo"})
     public void getXiupinComment() throws Exception {
+        int showGroupId=xiupn.xiupinList(1,10).path("data.content[0].showGroupId");
         Response response=xiupn.xiupinComment(showGroupId);
         response.then().statusCode(200).body("msg",equalTo("success"));
 

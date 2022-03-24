@@ -1,0 +1,8 @@
+currentEnv: test
+
+test:
+  host: https://test-conbow-api.goodaa.com.cn #地址不一定对
+
+
+online:
+  host: https://conbow-api.goodaa.com.cn
