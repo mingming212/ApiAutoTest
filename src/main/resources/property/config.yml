@@ -1,8 +1,9 @@
-currentEnv: test
+currentEnv: online
 
-test:
-  host: https://test-conbow-api.goodaa.com.cn #地址不一定对
-
-
-online:
-  host: https://conbow-api.goodaa.com.cn
+env:
+  test:
+    host: https://test-conbow-api.goodaa.com.cn
+    host_wechat: https://test-wechat-applet.goodaa.com.cn #测试环境不一定能跑通
+  online:
+    host: https://conbow-api.goodaa.com.cn
+    host_wechat: https://wechat-applet.goodaa.com.cn

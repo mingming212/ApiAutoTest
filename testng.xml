@@ -15,7 +15,7 @@
 
         <packages>
             <package name="com.whs.cases"></package>
-            <package name="com.whs.conbow.xiupin"/>
+            <package name="com.whs.conbow.*"/>
 
         </packages>
         

@@ -1,18 +1,12 @@
 package com.whs.conbow.xiupin;
 
-import com.whs.conbow.xiupin.DemoFather;
-import com.whs.conbow.xiupin.Xiupin;
 import com.whs.utils.GetDataProperty;
-import com.whs.utils.PostOrGetMethod;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
-
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 
@@ -22,14 +16,6 @@ import static org.hamcrest.Matchers.equalTo;
 @Feature("秀拼")
 public class XiupinTest{
     Xiupin xiupn=new Xiupin();
-
-    String propPath="property/data.properties";
-    String host= GetDataProperty.getproperdata(propPath,"host_xiupin");
-    String header="header_public";
-//    int showGroupId=0;
-
-
-
 
     @Story("获取我的秀拼列表")
     @Test(description = "成功返回秀拼列表")
@@ -52,13 +38,6 @@ public class XiupinTest{
 
         Response response=xiupn.xiupinList(1,10);
         response.then().statusCode(200).body("data.size",equalTo(10));
-
-/*
-        int showGroupId=response.path("data.content[0].showGroupId");
-        System.out.println("-----------------"+showGroupId);
-        this.showGroupId=showGroupId;
-*/
-
     }
 
     @Story("获取我的秀拼列表")

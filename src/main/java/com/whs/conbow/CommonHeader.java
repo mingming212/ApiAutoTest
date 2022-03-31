@@ -1,10 +1,10 @@
-package com.whs.conbow.xiupin;
+package com.whs.conbow;
 
 import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
-public class DemoFather {
+public class CommonHeader {
 
     public RequestSpecification getRequestSpecification(){
         return given()
