@@ -1,6 +1,5 @@
 package com.whs.conbow.xiupin;
 
-import com.whs.utils.GetDataProperty;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;

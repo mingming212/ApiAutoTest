@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 public class WriteExcel {
 
     String prourl="property/data.properties";
-    String writeurl=GetDataProperty.getproperdata(prourl,"writeurl");
+    String writeurl= PropertyManage.getproperdata(prourl,"writeurl");
     public void write(String str[]) throws Exception{
         FileInputStream in= new FileInputStream(writeurl);
 

@@ -2,7 +2,6 @@ package com.whs.utils;
 
 import static io.restassured.RestAssured.given;
 
-import com.alibaba.fastjson.JSONObject;
 import io.qameta.allure.Allure;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -10,12 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.useRelaxedHTTPSValidation;
-import static org.hamcrest.Matchers.equalTo;
 
 public class PostOrGetMethod {
 //    String prourllogin="property/data.properties";
@@ -103,7 +99,7 @@ public class PostOrGetMethod {
         String param_xiupinInfo="";
         String header="header_public";
         String propPath="./src/main/resources/property/data.properties";
-        String host= GetDataProperty.getproperdata(propPath,"host_xiupin");
+        String host= PropertyManage.getproperdata(propPath,"host_xiupin");
 
         Response response=get(host, url_xiupinInfo, header, "", "200", "", "");
         int return_showGroupId=response.path("data.showGroupId");

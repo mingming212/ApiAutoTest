@@ -1,22 +1,18 @@
 package com.whs.cases;
 
-import com.jayway.jsonpath.JsonPath;
-import com.whs.utils.GetDataProperty;
+import com.whs.utils.PropertyManage;
 import com.whs.utils.PostOrGetMethod;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Test(groups = "NoRun")
 public class GongQuJiankong {
     PostOrGetMethod request=new PostOrGetMethod();
     String propPath = "property/data.properties";
-    String host = GetDataProperty.getproperdata(propPath, "host");
+    String host = PropertyManage.getproperdata(propPath, "host");
     String header="header_public";
     String cameraIndexCode="";
 

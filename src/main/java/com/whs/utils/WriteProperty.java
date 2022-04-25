@@ -6,12 +6,9 @@ import java.util.Properties;
 public class WriteProperty {
 
     public static void writeProperty(Object value) throws IOException {
-
-
         Properties pro = new Properties();
+        InputStream is =  PropertyManage.class.getClassLoader().getResourceAsStream("property/gettoken.properties");
         String writepriperty = "property/gettoken.properties";
-
-
 
         StringBuffer buf=new StringBuffer();
         buf.append(value);

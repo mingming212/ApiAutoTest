@@ -2,21 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
 
-    <test verbose="2" preserve-order="true" name="/Users/helena.liu/gitProjects/ApiAutoTest">
+    <test verbose="2" preserve-order="true" name="ApiAutoTest">
         <groups>
             <run>
-
                 <!--不执行的group：需要在不想执行的class前面加上@Test(groups={“NoRun”})-->
                 <exclude name="NoRun"></exclude>
             </run>
-
         </groups>
-
 
         <packages>
             <package name="com.whs.cases"></package>
             <package name="com.whs.conbow.*"/>
-
         </packages>
         
         <classes>
@@ -27,5 +23,9 @@
             </class>
 
         </classes>
+    </test>
+
+    <test name="test">
+
     </test>
 </suite>

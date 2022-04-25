@@ -1,6 +1,5 @@
 package com.whs.utils;
 
-import org.testng.annotations.Test;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
@@ -10,7 +9,7 @@ public class GetConfUtil {
 
     public static String getUrlFromYaml(){
         Yaml yaml=new Yaml();
-        InputStream is =  GetDataProperty.class.getClassLoader().getResourceAsStream("property/config.yml");
+        InputStream is =  PropertyManage.class.getClassLoader().getResourceAsStream("property/config.yml");
         HashMap<String, Object> map=yaml.load(is);
         String currentEnv=map.get("currentEnv").toString();
         String host="";
@@ -31,7 +30,7 @@ public class GetConfUtil {
 
     public static String getWechatUrlFromYaml(){
         Yaml yaml=new Yaml();
-        InputStream is =  GetDataProperty.class.getClassLoader().getResourceAsStream("property/config.yml");
+        InputStream is =  PropertyManage.class.getClassLoader().getResourceAsStream("property/config.yml");
         HashMap<String, Object> map=yaml.load(is);
         String currentEnv=map.get("currentEnv").toString();
         String host="";

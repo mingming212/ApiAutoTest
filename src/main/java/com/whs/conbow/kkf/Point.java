@@ -14,7 +14,7 @@ public class Point extends CommonHeader {
     String host= GetConfUtil.getUrlFromYaml();
 
     /**
-     *  @param type 收入接口"type": 1，是int型；支出接口"type": "2",type是字符串
+     * @param type 收入接口"type": 1，是int型；支出接口"type": "2",type是字符串
      * @param pageSize
      * @param pageNum
      * @return

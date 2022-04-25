@@ -1,9 +1,6 @@
 package com.whs.utils;
 
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 
@@ -15,7 +12,7 @@ public class ReadExcel {
     //读取excel文件
     public static List<String[]> readExcel() throws IOException {
         String prourl="property/data.properties";
-        String readurl=GetDataProperty.getproperdata(prourl,"readurl");
+        String readurl= PropertyManage.getproperdata(prourl,"readurl");
         List<String[]> readliststr=new ArrayList<String[]>();
 
         //开始读取

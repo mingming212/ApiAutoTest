@@ -1,6 +1,6 @@
 package com.whs.cases;
 
-import com.whs.utils.GetDataProperty;
+import com.whs.utils.PropertyManage;
 import com.whs.utils.PostOrGetMethod;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -15,7 +15,7 @@ public class xiupin_V1 {
     PostOrGetMethod request=new PostOrGetMethod();
 
     String propPath="property/data.properties";
-    String host= GetDataProperty.getproperdata(propPath,"host_xiupin");
+    String host= PropertyManage.getproperdata(propPath,"host_xiupin");
     String header="header_public";
 
     @Test
