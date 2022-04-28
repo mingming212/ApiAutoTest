@@ -15,7 +15,7 @@ import io.restassured.response.Response;
  */
 public class Login extends CommonHeader {
     /**
-     * 这个方法故意写的执行失败
+     * 这个方法故意写的执行失败（因为此小程序项目中没有登录token，用的其他项目里的登录做演示）
      */
     public Response login() {
         //调login接口，获取返回结果中的token，存到config，使header能获取最新的token，使后面的case用新的header
